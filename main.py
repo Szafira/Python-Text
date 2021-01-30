@@ -21,6 +21,14 @@ def main():
         screen.blit(statusText, (0, 450))
         pygame.display.update()
 
+    def movement_display():
+        movMessage = controls.movMessage
+        font_object = pygame.font.Font(None, 32)
+        statusText = font_object.render(movMessage, True, 'white')
+        screen.blit(statusText, (0, 482))
+        pygame.display.update()
+
+
     screen = pygame.display.set_mode((600, 600))
     font = pygame.font.Font(None, 32)
     clock = pygame.time.Clock()
@@ -51,6 +59,8 @@ def main():
                     if event.key == pygame.K_RETURN:
                         movement(text)
                         text = ''
+                        game_over = controls.game_over
+
                     elif event.key == pygame.K_BACKSPACE:
                         text = text[:-1]
                     else:
@@ -67,6 +77,7 @@ def main():
 
         pygame.display.flip()
         message_display()
+        movement_display()
         clock.tick(10)
 
 
